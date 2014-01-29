@@ -1,7 +1,7 @@
 /*
 Version 1.0
 
-Copyright 2014 Bastian Schwabe / Red White Silver GmbH
+Copyright 2014 Red White Silver GmbH
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
