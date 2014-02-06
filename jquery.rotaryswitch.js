@@ -1,5 +1,5 @@
 /*
-Version 1.0
+Version 1.0.1
 
 Copyright 2014 Red White Silver GmbH
 
@@ -21,14 +21,15 @@ limitations under the License.
 	var pluginName = 'rotaryswitch',
 		defaults = {
 			minimum: 0, // Minimal value
-			maximum: 4, // Maximum value
+			maximum: 12, // Maximum value
 			step: 1, // Step size
 			snapInMotion: true, // Snap to steps in motion
-			hideInput: true, // Hide input element
 			beginDeg: 0, // Start point in deg
 			lengthDeg: 360,	// Length in deg
 			minimumOverMaximum: true, // Which value will used, if the the start and the end point at the same deg.
-			themeClass: 'defaultTheme'
+			showInput: false, // Show input element
+			showMarks: false, // Show deg marks
+			themeClass: 'defaultTheme' // Theme class
 		};
 	
 	function Plugin(element, options) {
@@ -37,7 +38,9 @@ limitations under the License.
 		this.htmlStructure = {
 			wrap: '<div class="rotaryswitchPlugin"></div>',
 			switchButton:  '<div class="switch"></div>',
-			overlay: '<div class="overlay"></div>'
+			overlay: '<div class="overlay"></div>',
+			marks: '<div class="marks"></div>',
+			mark: '<div class="mark"></div>'
 		};
 		this.mousePosition = {x: -1, y: -1};
 		this.switchDeg = 0;
@@ -66,11 +69,7 @@ limitations under the License.
 		*/
 		
 		initialize: function() {
-			// Hide the input element, if wished
-			if (this.options.hideInput === true) {
-				this.element.hide();
-			}
-
+			
 			// Save the needed jquery DOM elements
 			this.domElements = {
 				// Wrap the input element and save the parent as main element and add theme class:
@@ -99,8 +98,42 @@ limitations under the License.
 			this.readValueFromInput(); // Get the value from the input element
 			
 			this.rotateSwitch(); // Rotate the switch
+		
+			// Show marks if wished
+			if (this.options.showMarks === true) {
+				this.renderMarks();
+			}
+			
+			// Show the input element if wished
+			if (this.options.showInput === false) {
+				this.element.hide();
+			}
 		},
-
+		
+		/**
+		* Adds marks for each step
+		*
+		* @param	none
+		* @return	none
+		*/
+		
+		renderMarks: function() {
+			var i=0,
+				len = this.steps / this.options.step,
+				deg = this.options.beginDeg,
+				degPerStep = this.degPerStep * this.options.step,
+				marks = $(this.htmlStructure.marks);
+			
+			for (; i < len; i += 1) {
+				deg += degPerStep;
+				var mark = $(this.htmlStructure.mark).css({'transform': 'rotate('+deg+'deg) translate(0, -'+ (this.domElements.main.width()/2 + (this.domElements.main.width()*0.1)) +'px)'});
+				marks.append(mark);
+			}
+						
+			this.domElements.main.append(marks);
+		},
+		
+		
 		/**
 		* On mouse down event handler
 		* Save the mouse position (x, y) to the object this.mousePosition
@@ -319,7 +352,7 @@ limitations under the License.
 				difference = Math.abs(Math.abs(exactDeg) - Math.abs(roundedDeg)),
 				rotateString = '';
 			
-			if (snap === true || (this.options.snapInMotion === true && difference < this.degPerStep / 3)) {
+			if (snap === true || (this.options.snapInMotion === true && difference < this.degPerStep / 6)) {
 				if (roundedDeg + this.options.beginDeg < 360) {
 					deg = (roundedDeg + this.options.beginDeg);
 				} else {
