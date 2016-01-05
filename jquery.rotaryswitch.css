@@ -3,28 +3,28 @@
 	width: 51px;
 	height: 51px;
 	cursor: pointer;
-	background: url(themes/darkSmallBackground.png) no-repeat;
+	background: url(theme/darkSmallBackground.png) no-repeat;
 }
 	@media only screen and (-moz-min-device-pixel-ratio: 2),
 	only screen and (-o-min-device-pixel-ratio: 2/1),
 	only screen and (-webkit-min-device-pixel-ratio: 2),
 	only screen and (min-device-pixel-ratio: 2) {
 		.rotaryswitchPlugin {
-			background-image: url(themes/darkSmallBackground@2x.png);
+			background-image: url(theme/darkSmallBackground@2x.png);
 			background-size: 100% 100%;
 		}
 	}
 	.rotaryswitchPlugin .switch {
 		width: 100%;
 		height: 100%;
-		background: url(themes/darkSmallFront.png) no-repeat;
+		background: url(theme/darkSmallFront.png) no-repeat;
 	}
 		@media only screen and (-moz-min-device-pixel-ratio: 2),
 		only screen and (-o-min-device-pixel-ratio: 2/1),
 		only screen and (-webkit-min-device-pixel-ratio: 2),
 		only screen and (min-device-pixel-ratio: 2) {
 			.rotaryswitchPlugin .switch {
-				background-image: url(themes/darkSmallFront@2x.png);
+				background-image: url(theme/darkSmallFront@2x.png);
 				background-size: 100% 100%;
 			}
 		}
@@ -53,26 +53,26 @@
 .rotaryswitchPlugin.big {
 	width: 286px;
 	height: 286px;
-	background: url(themes/darkBigBackground.png) no-repeat;
+	background: url(theme/darkBigBackground.png) no-repeat;
 }
 	@media only screen and (-moz-min-device-pixel-ratio: 2),
 	only screen and (-o-min-device-pixel-ratio: 2/1),
 	only screen and (-webkit-min-device-pixel-ratio: 2),
 	only screen and (min-device-pixel-ratio: 2) {
 		.rotaryswitchPlugin.big {
-			background-image: url(themes/darkBigBackground@2x.png);
+			background-image: url(theme/darkBigBackground@2x.png);
 			background-size: 100% 100%;
 		}
 	}
 	.rotaryswitchPlugin.big .switch {
-		background: url(themes/darkBigFront.png) no-repeat;
+		background: url(theme/darkBigFront.png) no-repeat;
 	}
 		@media only screen and (-moz-min-device-pixel-ratio: 2),
 		only screen and (-o-min-device-pixel-ratio: 2/1),
 		only screen and (-webkit-min-device-pixel-ratio: 2),
 		only screen and (min-device-pixel-ratio: 2) {
 			.rotaryswitchPlugin.big .switch {
-				background-image: url(themes/darkBigFront@2x.png);
+				background-image: url(theme/darkBigFront@2x.png);
 				background-size: 100% 100%;
 			}
 		}
@@ -99,8 +99,8 @@
 		color: #0e0e0e;
 	}
 .rotaryswitchPlugin.big.light {
-	background: url(themes/lightBigBackground.png) no-repeat;
+	background: url(theme/lightBigBackground.png) no-repeat;
 }
 	.rotaryswitchPlugin.big.light .switch {
-		background: url(themes/lightBigFront.png) no-repeat;
+		background: url(theme/lightBigFront.png) no-repeat;
 	}
